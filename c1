@@ -1,0 +1,581 @@
+# Chapter 1: Introduction to Software Requirements Engineering (SRE)
+
+* **Source of PP slides:** Tsui, F., Karam, O., & Bernal, B. (2023). *Essentials of Software Engineering* (5th ed.). Jones & Bartlett Learning.
+* **PPT 幻灯片来源：** Tsui, F., Karam, O., & Bernal, B. (2023). 《软件工程基础》（第5版）。Jones & Bartlett Learning 出版社。
+
+---
+
+## 1. Lesson Objectives (课程目标)
+
+* To explain what is requirement engineering.
+  * 解释什么是需求工程。
+* To understand why engineer requirements.
+  * 理解为什么要进行需求工程。
+* To describe the obstacles to good requirements engineering practice.
+  * 描述阻碍良好需求工程实践的障碍。
+* To understand Agile development processes and requirement engineering.
+  * 理解敏捷开发过程与需求工程。
+
+---
+
+## 2. What is Requirement Engineering? (什么是需求工程？)
+
+### The Tree Swing Cartoon (树秋千漫画：沟通鸿沟)
+* **How the customer explained it:** A three-tiered wooden swing hanging from a tree branch.
+  * **客户是如何解释的：** 挂在树枝上的三层木板秋千。
+* **How the project leader understood it:** A single-seat swing tied around the main trunk and a branch.
+  * **项目负责人是如何理解的：** 绑在主树干和树枝上的单座秋千。
+* **How the engineer designed it:** The main tree trunk cut in the middle with external wooden poles supporting the branches.
+  * **工程师是如何设计的：** 树干中间被锯断，用外部木杆支撑着树枝。
+* **How the programmer wrote it:** The swing board lying flat on the ground, tied to the tree trunk with ropes.
+  * **程序员是如何编写代码的：** 秋千板直接平放在地上，用绳子死死绑在树干上。
+* **How the sales executive described it:** A luxurious blue armchair hanging from the tree with shining sunbeams behind it.
+  * **销售主管是如何描述的：** 挂在树上的豪华蓝色扶手椅，背后还有耀眼的光芒。
+* **How the project was documented:** Completely blank—nothing there at all, just the grass and shadow.
+  * **项目是如何记录文档的：** 完全空白——什么都没有，只有草地和影子。
+* **What operations installed:** Just a single rope hanging from a branch with no seat.
+  * **运维人员安装的是什么：** 仅仅是一根挂在树枝上的绳子，连座位都没有。
+* **How the customer was billed:** A massive, expensive rollercoaster.
+  * **客户是如何被计费的：** 一个庞大且昂贵的过山车。
+* **How the helpdesk supported it:** Just a cut-down tree stump with no tree or swing left.
+  * **技术支持（Helpdesk）是如何维护的：** 只剩下一个被砍断的树桩，树和秋千都没了。
+* **What the customer really needed:** A simple tire swing hanging by a single rope from a branch.
+  * **客户真正需要的是什么：** 一个用单根绳子挂在树枝上的简单轮胎秋千。
+
+### The Problem World and the Machine Solution (问题世界与机器解决方案)
+* To make sure a software solution “correctly” solves some real-world problem, we must first fully understand and define...
+  * 为了确保软件解决方案能够“正确地”解决某些现实世界的问题，我们必须首先充分理解并定义……
+  * ...what problem needs to be solved in the real world.
+    * ……在现实世界中需要解决什么问题。
+  * ...the context in which the problem arises.
+    * ……问题产生的上下文（环境/背景）。
+* **Example: Car control (示例：汽车控制)**
+  * **Problem:** Manual handbrake release can be inconvenient in certain situations.
+    * **问题：** 在某些情况下，手动释放手刹可能会带来不便。
+  * **Context:** Car driving, braking, safety rules, ...
+    * **上下文：** 汽车驾驶、制动、安全规则等……
+
+### Core Definition of Requirement Engineering (需求工程的核心定义)
+* RE is a set of activities producing the requirements on a software-intensive system for the system objectives, functionalities, target qualities, constraints, assumptions.
+  * 需求工程（RE）是一系列活动，旨在为软件密集型系统生成关于系统目标、功能、目标质量、约束和假设的需求。
+* Based on problems raised by the system-as-is and opportunities provided by new technologies.
+  * 这些需求基于现有系统（system-as-is）提出的问题以及新技术提供的机会。
+* Requirements quality assurance is a key concern for software quality assurance.
+  * 需求质量保证是软件质量保证的一个关键关注点。
+* **Key Activities:** Elicitation, evaluation, specification, analysis, evolution management.
+  * **关键活动：** 获取（elicitation）、评估（evaluation）、规约（specification）、分析（analysis）、演化管理（evolution management）。
+* **So, Requirement Engineering is… (因此，需求工程是……)**
+  * Identify & analyze problems with an existing system (system-as-is).
+    * 识别并分析现有系统（system-as-is）存在的问题。
+  * Identify & evaluate objectives, opportunities, options for new system (system-to-be).
+    * 识别并评估新系统（system-to-be）的目标、机会和备选方案。
+  * Identify & define functionalities of, constraints on, responsibilities in system-to-be.
+    * 识别并定义目标系统（system-to-be）的功能、约束和职责。
+  * Specify & organize all of these in a requirements document to be maintained throughout system evolution.
+    * 将所有这些内容规约并组织到一份需求文档中，并在整个系统演化过程中对其进行维护。
+  * **System = software + environment (people, devices, other software).**
+    * **系统 = 软件 + 环境（人员、设备、其他软件）。**
+
+### Example: Transportation Between Airport Terminals (示例：机场航站楼之间的交通)
+* **Problem (system-as-is):** Passengers frequently missing flight connections among different terminals; slow & inconvenient transportation; number of passengers regularly increasing.
+  * **问题（现有系统）：** 乘客经常错过不同航站楼之间的转机航班；交通缓慢且不便；乘客数量持续增加。
+* **Objectives, options (system-to-be):** Support high-frequency trains between terminals with or without train drivers?
+  * **目标与方案（目标系统）：** 支持航站楼之间的高频次列车，采用有司机还是无人驾驶方案？
+* **Functionalities, constraints:** Software-based control of train accelerations, doors opening etc. to achieve prompt and safe transportation.
+  * **功能与约束：** 基于软件控制列车加速、车门开启等，以实现准时且安全的运输。
+* **RE deliverable:** Requirements Document (RD) for system-to-be.
+  * **需求工程交付物：** 目标系统的需求文档（RD）。
+
+### Requirements in the Software Lifecycle (软件生命周期中的需求)
+* **Requirements engineering** $\rightarrow$ **Software design** $\rightarrow$ **Software implementation** $\rightarrow$ **Software evolution**
+  * **需求工程** $\rightarrow$ **软件设计** $\rightarrow$ **软件实现** $\rightarrow$ **软件演化**
+* **Requirements engineering:** Getting the right system.
+  * **需求工程：** 构建“正确的系统”（做对的事情）。
+* **Software design & implementation:** Getting the software right.
+  * **软件设计与实现：** “正确地构建”软件（把事情做对）。
+
+### Other Definitions of RE (需求工程的其他经典定义)
+* **Ross '77:** Requirements definition must say...
+  * **Ross（1977年）：** 需求定义必须说明……
+  * ...why a new system is needed, based on current or foreseen conditions,
+    * ……基于当前或可预见的条件，为什么需要一个新系统，
+  * ...what system features will satisfy this context,
+    * ……什么样的系统特性能够满足这一上下文环境，
+  * ...how the system is to be constructed.
+    * ……系统将如何被构建。
+* **Zave '97:** RE is concerned with the real-world goals for, functions of, constraints on software systems; and with their link to precise specifications of software behavior, evolution over time and families.
+  * **Zave（1997年）：** 需求工程关注软件系统在现实世界中的目标、功能、约束；以及它们与软件行为精确规约、随时间演化和产品族之间的联系。
+
+---
+
+## 3. The Scope of RE: The WHY, WHAT, WHO Dimensions (需求工程的范围：WHY、WHAT、WHO 维度)
+
+* **Overview Flow:** Problems, opportunities, system knowledge (**System-as-is**) $\rightarrow$ **Objectives (WHY a new system?)** $\rightarrow$ satisfy $\rightarrow$ **WHAT services?** $\rightarrow$ assign $\rightarrow$ **WHO will be responsible for what?** $\rightarrow$ requirements, constraints, assumptions (**System-to-be**).
+  * **总体流程：** 问题、机会、系统知识（**现有系统**） $\rightarrow$ **目标（为什么需要新系统？）** $\rightarrow$ 满足 $\rightarrow$ **什么服务（WHAT）？** $\rightarrow$ 分配 $\rightarrow$ **谁来负责什么（WHO）？** $\rightarrow$ 需求、约束、假设（**目标系统**）。
+
+### The WHY Dimension (WHY 维度)
+* Identify, analyze, refine the system-to-be’s objectives:
+  * 识别、分析并细化目标系统（system-to-be）的目标：
+  * To address analyzed deficiencies of the system-as-is.
+    * 以解决所分析出的现有系统的不足。
+  * In alignment with business objectives.
+    * 与业务目标保持一致。
+  * Taking advantage of technology opportunities.
+    * 充分利用技术机遇。
+* **Example: Airport train control**
+  * **示例：机场列车控制**
+  * “Serve more passengers”
+    * “服务更多乘客”
+  * “Reduce transfer time among terminals”
+    * “减少航站楼之间的换乘时间”
+* **Difficulties (难点):**
+  * Acquire domain knowledge.
+    * 获取领域知识。
+  * Evaluate alternative options (e.g. alternative ways of satisfying the same objective).
+    * 评估备选方案（例如：满足同一目标的不同方法）。
+  * Match problems-opportunities, and evaluate these: implications, associated risks.
+    * 将问题与机会进行匹配，并评估其影响及相关风险。
+  * Handle conflicting objectives?
+    * 如何处理相互冲突的目标？
+
+### The WHAT Dimension (WHAT 维度)
+* Identify & define the system-to-be’s functional services (software services, associated manual procedures):
+  * 识别并定义目标系统的功能性服务（软件服务、相关的手动操作流程）：
+  * To satisfy the identified objectives.
+    * 以满足已识别的目标。
+  * According to quality constraints: security, performance, ...
+    * 符合质量约束：安全性、性能等……
+  * Based on realistic assumptions about the environment.
+    * 基于对环境的切合实际的假设。
+* **Example: Airport train control**
+  * **示例：机场列车控制**
+  * “Computation of safe train accelerations”
+    * “计算安全的列车加速度”
+  * “Display of useful information for passengers inside trains”
+    * “在列车内部向乘客显示有用信息”
+* **Difficulties (难点):**
+  * Identify the right set of features.
+    * 识别出正确的功能集合。
+  * Specify these precisely for understanding by all parties.
+    * 精确地规约这些功能，以便所有相关方都能理解。
+  * Ensure backward traceability to system objectives?
+    * 如何确保向后可追溯性（即追溯到系统目标）？
+
+### The WHO Dimension (WHO 维度)
+* Assign responsibilities for the objectives, services, constraints among system-to-be components:
+  * 在目标系统的各个组件之间分配目标、服务和约束的职责：
+  * Based on their capabilities and on the system’s objectives.
+    * 基于它们的能力以及系统的目标。
+  * Yielding the software-environment boundary.
+    * 从而划定软件与环境之间的边界。
+* **Example: Airport train control**
+  * **示例：机场列车控制**
+  * “Safe train acceleration” ... under direct responsibility of software-to-be (driverless option) or of driver following software indications?
+    * “安全的列车加速”……是由目标软件直接负责（无人驾驶方案），还是由司机根据软件指示来负责？
+  * “Accurate estimation of train speed/position” ... under responsibility of tracking system or of preceding train?
+    * “准确估算列车速度/位置”……是由追踪系统负责，还是由前车负责？
+* **Difficulties (难点):**
+  * Evaluate alternative options to decide on the right degree of automation?
+    * 如何评估备选方案以决定合适的自动化程度？
+
+### Exercise: Scope of RE for a Library System (课堂讨论练习：图书馆系统的需求工程范围)
+* **WHY:** Why do we need a new library system? (e.g., manual borrowing is slow, books are easily lost, improve search efficiency).
+  * **WHY（为什么）：** 为什么需要新的图书馆系统？（例如：人工借还书太慢、书籍容易丢失、提高检索效率）。
+* **WHAT:** What services should it provide? (e.g., online book search, self-checkout, overdue notifications).
+  * **WHAT（做什么）：** 系统应提供什么服务？（例如：在线图书检索、自助借还、逾期提醒）。
+* **WHO:** Who is responsible for what? (e.g., software tracks due dates and sends emails; librarian handles damaged books; barcode scanner reads book IDs).
+  * **WHO（谁来做）：** 谁负责什么？（例如：软件负责追踪到期日并发送邮件；图书管理员处理损坏书籍；条码扫描仪读取书籍编号）。
+
+---
+
+## 4. Categories of Requirements (需求的分类)
+
+### (1) Functional Requirements (功能性需求)
+* Prescribe what services the software-to-be should provide.
+  * 规定目标软件应该提供哪些服务。
+* Capture intended software effects on environment, applicability conditions.
+  * 捕捉软件对环境的预期影响以及适用条件。
+* Units of functionality resulting from software operations.
+  * 软件运行所产生的功能单元。
+* **Eg:** “The software shall control the acceleration of all trains.”
+  * **例如：** “软件应控制所有列车的加速度。”
+
+### (2) Non-Functional Requirements (非功能性需求)
+* Constrain how such services should be provided.
+  * 约束这些服务应该如何提供。
+* Defines constraints on the way the software should satisfy its functional requirements / on the way it should be developed.
+  * 定义软件在满足功能性需求的方式上，或在其开发方式上的约束。
+* **Eg:** “Acceleration commands shall be issued every 3 seconds to every train.”
+  * **例如：** “必须每隔3秒向每列列车发送一次加速指令。”
+* **Typical Classification:**
+  * **典型分类：**
+  * **Quality requirements:** safety, security, accuracy, time/space performance, usability, ...
+    * **质量需求：** 安全性（safety）、信息安全（security）、准确性、时间/空间性能、可用性等……
+  * **Compliance requirements:** ...
+    * **合规性需求：** ……
+  * **Architectural requirements:** ...
+    * **架构需求：** ……
+  * **Development requirements:** ...
+    * **开发需求：** ……
+
+### A Taxonomy of Non-Functional Requirements (非功能性需求的分类体系)
+* *Note: No clear-cut boundaries, possible overlaps…*
+  * *注：没有绝对清晰的界限，可能存在重叠……*
+  * **Functional/non-functional overlap:** e.g. functional reqs for firewall management are security-related (non-functional req).
+    * **功能性与非功能性重叠：** 例如，防火墙管理的功能性需求与安全性（非功能性需求）相关。
+  * **Non-functional overlaps:** e.g. “high frequency of train commands” is related to performance and safety.
+    * **非功能性需求之间的重叠：** 例如，“高频次的列车指令”既与性能相关，也与安全性相关。
+* **Tree Hierarchy (层级树状结构):**
+  * **Non-Functional Requirement (非功能性需求)**
+    * **1. Quality of Service (服务质量):**
+      * **Safety** (安全性)
+      * **Security** (信息安全): Confidentiality (机密性), Integrity (完整性), Availability (可用性)
+      * **Usability** (可用性/易用性): Convenience (便捷性), Interface (界面: User interaction 用户交互, Device interaction 设备交互)
+      * **Performance** (性能): Time (时间), Space (空间), Deadline (截止时间)
+      * **Reliability** (可靠性)
+      * **Accuracy** (准确性)
+    * **2. Compliance** (合规性)
+    * **3. Architectural Constraint (架构约束):**
+      * **Distribution** (分布式)
+      * **Installation** (安装)
+    * **4. Development Constraint (开发约束):**
+      * **Maintainability** (可维护性)
+      * **Cost** (成本)
+      * **Variability** (可变性)
+      * **Software interoperability** (软件互操作性)
+      * **Cost** (成本)
+
+### Why Requirements Taxonomies are Helpful (为什么需求分类法很有帮助)
+* More specific definition of what requirements are in specific classes.
+  * 对特定类别中的需求给出更具体的定义。
+* More semantic characterization of requirements...
+  * 对需求进行更丰富的语义刻画……
+  * ...prescribing desired behaviors (e.g. many functional reqs).
+    * ……规定期望的行为（例如：许多功能性需求）。
+  * ...ruling out inadmissible behaviors (e.g. many safety, security, accuracy reqs).
+    * ……排除不允许的行为（例如：许多安全性、信息安全、准确性需求）。
+  * ...indicating preferred behaviors (e.g. soft, “-ility” reqs).
+    * ……指明偏好的行为（例如：软性需求，即以“-ility”结尾的质量属性需求）。
+* Elicitation/analysis can be guided by taxonomy browsing:
+  * 需求获取与分析可以通过浏览分类法来指导：
+  * Is there any confidentiality req on information X?
+    * 信息 X 是否有任何机密性需求？
+  * Is there any accuracy req on information Y?
+    * 信息 Y 是否有任何准确性需求？
+  * Is there any conflict between confidentiality and accountability reqs in my system?
+    * 我的系统中机密性需求和可问责性需求之间是否存在冲突？
+
+### (3) Other Classification of Requirements (需求的其他分类方式)
+* **Product requirements (产品需求):**
+  * Is a need or constraint on the software to be developed.
+    * 是对待开发软件本身的需求或约束。
+  * **Eg:** “The software shall verify that a student meets all pre-requirements before he or she registers for a course.”
+    * **例如：** “软件应在学生注册课程前验证其是否满足所有先修条件。”
+* **Process requirements (过程需求):**
+  * Is essentially a constraint on the development of the software.
+    * 本质上是对软件开发过程的约束。
+  * **Eg:** “The software shall be developed using Waterfall Development Process.”
+    * **例如：** “该软件应使用瀑布开发过程进行开发。”
+
+---
+
+## 5. The Requirements Engineering Process (需求工程过程)
+
+**Overall Workflow:**
+`start` $\rightarrow$ **Domain understanding & elicitation** $\rightarrow$ *(alternative proposals)* $\rightarrow$ **Evaluation & agreement** $\rightarrow$ *(agreed requirements)* $\rightarrow$ **Specification & documentation** $\rightarrow$ *(documented requirements)* $\rightarrow$ **Validation & verification** $\rightarrow$ *(consolidated requirements)*
+
+### Step 1: Domain Understanding (领域理解)
+* **Studying the system-as-is:**
+  * **研究现有系统（system-as-is）：**
+  * **Business organization:** structure, dependencies, strategic objectives, policies, workflows, operational procedures, ...
+    * **业务组织：** 结构、依赖关系、战略目标、政策、工作流、操作规程等……
+  * **Application domain:** concepts, objectives, tasks, constraints, regulations, ...
+    * **应用领域：** 概念、目标、任务、约束、法规等……
+  * **Strengths & weaknesses of the system-as-is.**
+    * **现有系统的优势与劣势。**
+* **Identifying the system stakeholders:**
+  * **识别系统利益相关者（Stakeholders）：**
+  * Groups or individuals affected by the system-to-be, who may influence its elaboration and its acceptance.
+    * 受目标系统影响的群体或个人，他们可能会影响系统的细化和验收。
+  * Decision makers, managers, domain experts, users, clients, subcontractors, analysts, developers, ...
+    * 决策者、管理者、领域专家、用户、客户、分包商、分析员、开发人员等……
+* **Products (产出物):** Initial sections for preliminary draft proposal; Glossary of terms.
+  * **产出物：** 初步草案提案的初始章节；术语表（Glossary of terms）。
+
+### Step 2: Requirements Elicitation (需求获取)
+* **Exploring the problem world ...**
+  * **探索问题世界……**
+  * Further analysis of problems with system-as-is: symptoms, causes, consequences.
+    * 进一步分析现有系统的问题：症状、原因、后果。
+  * Analysis of technology opportunities, new market conditions.
+    * 分析技术机遇和新的市场条件。
+  * Identification of...
+    * 识别……
+    * ...improvement objectives.
+      * ……改进目标。
+    * ...organizational/technical constraints on system-to-be.
+      * ……目标系统的组织/技术约束。
+    * ...alternative options for satisfying objectives, for assigning responsibilities.
+      * ……满足目标和分配职责的备选方案。
+    * ...scenarios of hypothetical software-environment interaction.
+      * ……假设的软件与环境交互的场景（Scenarios）。
+    * ...requirements on software, assumptions on environment.
+      * ……对软件的需求，以及对环境的假设。
+* **Product (产出物):** Additional sections for preliminary draft proposal.
+  * **产出物：** 初步草案提案的附加章节。
+
+### Step 3: Evaluation & Agreement (评估与达成一致)
+* **Negotiation-based decision making ...**
+  * **基于协商的决策……**
+  * Identification & resolution of conflicting concerns.
+    * 识别并解决相互冲突的关注点。
+  * Identification & resolution of risks with proposed system.
+    * 识别并解决拟议系统的风险。
+  * Comparison of alternative options against objectives & risks, and selection of preferred ones.
+    * 根据目标和风险对比备选方案，并选择最优方案。
+  * Requirements prioritization: to resolve conflicts, address cost/schedule constraints, support incremental development.
+    * 需求优先级排序：以解决冲突、应对成本/进度约束，并支持增量开发。
+* **Product (产出物):** Final sections of draft proposal documenting the selected/agreed objectives, requirements, assumptions (incl. rationale for selected options).
+  * **产出物：** 草案提案的最终章节，记录选定/达成一致的目标、需求、假设（包括所选方案的理由/依据）。
+
+### Step 4: Specification & Documentation (规约与文档化)
+* **Precise definition of all features of the agreed system:**
+  * **对达成一致的系统的所有特性进行精确定义：**
+  * Objectives, concepts, relevant domain properties, system/software requirements, assumptions, responsibilities.
+    * 目标、概念、相关领域属性、系统/软件需求、假设、职责。
+  * Satisfaction arguments, rationale for options taken.
+    * 满足性论证（Satisfaction arguments）、所采纳方案的理由。
+  * Likely system variants & evolutions.
+    * 可能的系统变体与演化方向。
+  * Estimated costs.
+    * 估算成本。
+  * Organization of these in a coherent structure.
+    * 将这些内容组织成连贯的结构。
+  * Documentation in a form understandable by all parties.
+    * 以所有相关方都能理解的形式进行文档化。
+* **Products (产出物):** Requirements Document (RD).
+  * **产出物：** 需求文档（RD）。
+
+### Step 5: Validation & Verification / Requirements Consolidation (确认与验证 / 需求整合)
+* **Quality assurance activity on RD ...**
+  * **针对需求文档（RD）的质量保证活动……**
+  * **Validation:** adequacy of RD items wrt real needs?
+    * **确认（Validation）：** 需求文档中的条目相对于真实需求是否充分且恰当？（做正确的事）
+  * **Verification:** omissions, inconsistencies?
+    * **验证（Verification）：** 是否存在遗漏或不一致？（把事做正确）
+  * Checks for other target qualities (discussed next).
+    * 检查其他目标质量属性（后续讨论）。
+  * Fixing of errors & flaws.
+    * 修复错误与缺陷。
+* **Products (产出物):** Consolidated RD, Acceptance test data, prototype, Development plan, Project contract.
+  * **产出物：** 整合后的需求文档、验收测试数据、原型、开发计划、项目合同。
+
+### RE: An Iterative Process (需求工程是一个迭代过程)
+* RE phases are ordered by data dependencies.
+  * 需求工程的各个阶段是按数据依赖关系排序的。
+* No strict sequencing: intertwining, overlap, backtracking.
+  * 没有严格的先后顺序：存在交织、重叠和回溯（backtracking）。
+* Iterated cycles due to error corrections & evolving needs:
+  * 由于错误纠正和不断变化的需求而产生迭代周期：
+  * ...during RE, during software development, after deployment.
+    * ……在需求工程期间、在软件开发期间，以及在系统部署之后。
+
+---
+
+## 6. Why Engineer Requirements? (为什么要进行需求工程？)
+
+### Benefits of Good RE (良好需求工程带来的好处)
+* Fewer defects in requirements and the development product.
+  * 减少需求和开发产品中的缺陷。
+* Reduced development rework.
+  * 减少开发返工。
+* Fewer unused or unnecessary features.
+  * 减少未使用或不必要的功能。
+* Reduced project chaos.
+  * 减少项目混乱。
+* Lower enhancement/maintenance costs.
+  * 降低增强和后期维护成本。
+* Better customer satisfaction, etc.
+  * 提高客户满意度等。
+
+### Facts, Data, and Citations (事实、数据与经典引用)
+* **Poor requirements are ubiquitous ... (Bell & Thayer ’76)**
+  * **糟糕的需求普遍存在……（Bell & Thayer，1976）**
+  * “Requirements need to be engineered and have continuing review and revision.”
+    * “需求需要经过工程化处理，并接受持续的审查和修订。”
+* **Prohibitive cost of late correction ... (Boehm ’81)**
+  * **后期修正的成本高得惊人……（Boehm，1981）**
+  * “Up to 200x cost of early correction.”
+    * “（后期修复的）成本高达早期修复的 200 倍。”
+* **RE is hard & critical ... (Brooks ’87)**
+  * **需求工程既艰难又至关重要……（Brooks，1987）**
+  * “Hardest, most important function of SE is the iterative extraction & refinement of requirements.”
+    * “软件工程中最困难、最重要的职能就是需求的迭代提取与精化。”
+
+### Empirical Evidence & Surveys (实证数据与行业调查)
+
+#### 1. Standish Report, 1995 (Standish 报告，1995年)
+* **Survey scope:** 350 US companies, 8,000 projects.
+  * **调查范围：** 350家美国公司，8,000个项目。
+* **Project Outcomes (项目结果):**
+  * **16%** Success (完全成功)
+  * **33%** Failed before completed (在完成前就失败了)
+  * **51%** Succeeded partially (部分成功：partial functionalities 功能残缺, excessive costs 成本超支, big delays 严重延期)
+* **Major source of failure:** Poor requirements engineering ($\approx$ 50% responses).
+  * **失败的主要根源：** 糟糕的需求工程（占受访反馈的约 50%）。
+* **Breakdown of Failure Factors (失败因素细分):**
+  * **13%** Lack of user involvement (缺乏用户参与)
+  * **13%** Requirements incompleteness (需求不完整)
+  * **11%** Changing requirements (需求变更)
+  * **9%** Unrealistic expectations (不切实际的期望)
+  * **5%** Unclear objectives (目标不明确)
+  * **49%** Others (其他原因)
+
+#### 2. European Survey, 1996 (欧洲调查，1996年)
+* **Coverage:** 3,800 EUR organizations, 17 countries [European Software Institute, 1996].
+  * **覆盖范围：** 17个国家的 3,800 家欧洲组织 [欧洲软件研究所，1996]。
+* **Main software problems perceived to be in...**
+  * **被认为存在的主要软件问题在于……**
+  * ...requirements specification ($> 50\%$ responses).
+    * ……需求规约（超过 50% 的受访者）。
+  * ...requirements evolution management ($50\%$ responses).
+    * ……需求演化管理（50% 的受访者）。
+
+#### 3. Persistence Over Time [J. Maresco, IBM developerWorks, 2007]
+* The requirements problem is perceived to persist in spite of progress in software technology (1994, 2000, 2003 data consistently show requirements-related causes account for a massive portion of project failures).
+  * 尽管软件技术不断进步，需求问题依然持续存在（1994、2000、2003年的数据一致表明，与需求相关的原因在项目失败中占据了极高比例）。
+
+### Cost & Characteristics of Requirements-Related Errors (与需求相关错误的成本与特征)
+* `[Boehm, Jones, Lutz, Hooks & Farry, ...]`
+* **The most numerous:** $\pm 40\%$ of software errors.
+  * **数量最多：** 约占软件错误总数的 $\pm 40\%$。
+* **The most persistent:** Found very late, often after software delivery.
+  * **最顽固/潜伏最深：** 发现得非常晚，通常在软件交付之后才被发现。
+* **The most expensive:**
+  * **修复成本最高：**
+  * Cost **5x** more if fixed during design.
+    * 如果在设计阶段修复，成本是需求阶段的 **5倍**。
+  * Cost **10x** more if fixed during implementation.
+    * 如果在实现（编码）阶段修复，成本是 **10倍**。
+  * Cost **20x** more if fixed during integration testing.
+    * 如果在集成测试阶段修复，成本是 **20倍**。
+  * Cost **200x** more if fixed after delivery.
+    * 如果在交付后修复，成本高达 **200倍**。
+* Account for **66%** of software error costs.
+  * 占所有软件错误总修复成本的 **66%**。
+
+### Requirements-Related Errors Can Be Dangerous (需求相关错误可能非常危险)
+* *Cf. ACM RISKS Digest Forum website (参见 ACM RISKS 风险文摘论坛网站)*
+* **US Aegis/Vincennes (1988):** Shooting of IranAir airbus — Missing timing between 2 threat events in requirements on alarm software.
+  * **美国宙斯盾/文森斯号巡洋舰事件（1988年）：** 击落伊朗航空客机 —— 警报软件的需求中遗漏了两个威胁事件之间的时间间隔逻辑。
+* **Patriot anti-missile system (1st Gulf war):** Hidden assumption on maximum usage time.
+  * **爱国者反导系统（第一次海湾战争）：** 关于系统最大连续运行时间的隐含假设（导致时钟漂移未拦截飞毛腿导弹）。
+* **London Ambulance System (1993):** Fatal delays — Wrong assumptions on crew behavior, ambulance localization system, radio communication, ...
+  * **伦敦救护车调度系统（1993年）：** 致命延误 —— 对急救人员行为、救护车定位系统、无线电通信等做出了错误的假设。
+* **Boeing 757 crash, Cali (1995):** Autopilot’s wrong timing/localization assumption on flap extension point.
+  * **波音757哥伦比亚卡利空难（1995年）：** 自动驾驶仪对襟翼展开点的时机/定位做出了错误的假设。
+
+---
+
+## 7. Role and Stakes of RE (需求工程的角色与利害关系)
+
+* **Technical impact:** On many software-related artefacts (as seen before).
+  * **技术影响：** 影响许多与软件相关的制品（如前所述，如设计、代码、测试）。
+* **Managerial impact:** Basis for communication among parties and for project management.
+  * **管理影响：** 作为各方沟通以及项目管理的基础。
+* **Legal impact:** Contractual commitment client-provider-subcontractors.
+  * **法律影响：** 构成客户、供应商和分包商之间的合同承诺。
+* **Impact on certification:** Mastered RE process required by many quality standards & certification authorities.
+  * **对认证的影响：** 许多质量标准和认证机构都要求具备成熟受控的需求工程流程。
+* **Impact on economy, security, and safety:** Cost and consequences of errors in requirements on the software-to-be, assumptions about its environment.
+  * **对经济、信息安全和人身安全的影响：** 目标软件需求错误以及环境假设错误所带来的高昂成本与严重后果。
+* **Social impact:** From user satisfaction $\rightarrow$ to degradation of working conditions $\rightarrow$ to system rejection.
+  * **社会影响：** 从用户满意 $\rightarrow$ 到工作条件恶化 $\rightarrow$ 最终导致系统被抵制/弃用。
+
+---
+
+## 8. Obstacles to Good RE Practice (良好需求工程实践的障碍)
+
+* **i) RE efforts often spent without guarantee of project contract being concluded.**
+  * **i) 需求工程的努力往往在项目合同尚未确保签订的情况下就已经投入了。**
+* **ii) Pressure on tight schedules, short-term costs, catching up on technology.**
+  * **ii) 面临紧迫的工期、短期成本控制以及追赶新技术的压力。**
+* **iii) Too little work available on RE economics:**
+  * **iii) 关于需求工程经济学的研究工作太少：**
+  * Lack of quantitative data on RE benefits & cost savings.
+    * 缺乏关于需求工程收益和成本节约的量化数据。
+  * Progress in RE process is harder to measure than in design, implementation.
+    * 需求工程过程的进展比设计和实现阶段更难衡量。
+* **iv) RDs are sometimes felt ...**
+  * **iv) 需求文档（RD）有时让人觉得……**
+  * ...big, complex, to be quickly outdated.
+    * ……庞大、复杂，且很快就会过时。
+  * ...too far away from the executable product customers are paying for.
+    * ……距离客户真正愿意付费的可执行产品太遥远。
+
+---
+
+## 9. Agile Development and RE (敏捷开发与需求工程)
+
+### Twelve Agility Principles (敏捷十二条原则)
+1. **Customer satisfaction by rapid delivery of useful software.**
+   * 通过尽早和持续地交付有价值的软件来使客户满意。
+2. **Welcome changing requirements, even late in development.**
+   * 欢迎需求变化，即使在开发后期也是如此。
+3. **Working software is delivered frequently (weeks rather than months).**
+   * 经常交付可工作的软件（以周为单位，而不是以月为单位）。
+4. **Working software is the principal measure of progress.**
+   * 可工作的软件是衡量进度的首要指标。
+5. **Sustainable development, able to maintain a constant pace.**
+   * 可持续的开发，能够保持恒定的开发速度。
+6. **Close, daily co-operation between business people and developers.**
+   * 业务人员和开发人员每天都要紧密合作。
+7. **Face-to-face conversation is the best form of communication (co-location).**
+   * 面对面交谈是最有效的沟通方式（同地办公）。
+8. **Projects are built around motivated individuals, who should be trusted.**
+   * 围绕受激励的个体来构建项目，并给予他们充分的信任。
+9. **Continuous attention to technical excellence and good design.**
+   * 持续关注技术卓越和良好的设计。
+10. **Simplicity - The art of maximizing the amount of work not done - is essential.**
+    * 简洁——最大化“不必要做的工作量”的艺术——是至关重要的。
+11. **Self-organizing teams.**
+    * 自组织团队。
+12. **Regular adaptation to changing circumstances.**
+    * 定期反思并适应不断变化的环境。
+
+### How Agile Overcomes Some RE Obstacles (敏捷开发如何克服部分需求工程障碍)
+* More agile development may overcome some obstacles:
+  * 更敏捷的开发方式可以克服一些传统障碍：
+  * Early & continuous provision of functionality of value to customer.
+    * 尽早且持续地向客户提供有价值的功能。
+  * By reducing the req-to-code distance.
+    * 通过缩短“需求到代码”的距离。
+* Short RE cycles in spiral RE process, each directly followed by short implementation cycle.
+  * 螺旋式需求工程过程中的短周期 RE，每个短周期后紧跟着一个短的实现周期。
+* Useful functional increment is elicited directly from the user.
+  * 直接从用户那里获取有用的功能增量。
+* Evaluation/spec/consolidation phases often shortcut (e.g. spec = test case on the implementation).
+  * 评估/规约/整合阶段通常被简化（例如：规约直接等同于实现上的测试用例）。
+* Increment is implemented/tested by small team at same location, close to the user for instant feedback, using strict rules.
+  * 功能增量由位于同一地点的小团队进行实现和测试，贴近用户以获取即时反馈，并遵循严格的开发规则。
+
+### Strong Assumptions for Agility to Be Successful (敏捷开发取得成功所需的强前提假设)
+* All stakeholder roles are reducible to one single role.
+  * 所有利益相关者的角色都可以简化为单一角色（即现场客户代表）。
+* Project sufficiently small to be assignable to single, small, single-location team (programmers/testers/maintainers).
+  * 项目规模足够小，可以分配给单个、小型、同地办公的团队（包含程序员/测试员/维护员）。
+* “User” can interact promptly & effectively.
+  * “用户”能够及时且有效地进行互动。
+* Functionality can be provided quickly, consistently, incrementally from essential to less important (no prioritization required).
+  * 功能可以按从核心到次要的顺序快速、一致、增量地提供（无需复杂的优先级排序）。
+* Non-functional aspects, environment assumptions, objectives, alternative options, risks may receive little attention.
+  * 非功能性方面、环境假设、宏观目标、备选方案和风险可能只会受到很少的关注。
+* Little documentation required for work coordination & product maintenance; requirements precision not required; verification before coding is less important than early release.
+  * 工作协调和产品维护几乎不需要文档；不要求需求的高度精确性；编码前的验证不如尽早发布重要。
+* Requirements changes are not likely to require major code refactoring.
+  * 需求变更不太可能需要大规模的代码重构。
+* **Spectrum of Agility (敏捷度的调节):**
+  * **敏捷度的调节：**
+  * More/less agility is achievable by less/more weight in elicitation, evaluation, documentation, consolidation phases of RE cycles.
+    * 通过在需求工程周期的获取、评估、文档化和整合阶段分配更少或更多的权重，可以实现更高或更低的敏捷度。
+```[cite: 1]
