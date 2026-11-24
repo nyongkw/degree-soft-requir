@@ -1,0 +1,88 @@
+# Chapter 2: Requirements Elicitation and Analysis
+
+## 1. Stakeholder Analysis (利益相关者分析)
+
+* **Selection Criteria:** Select a representative sample dynamically based on organization role, decision-making power, domain expertise, exposure to problems, personal interests/conflicts, and influence on system acceptance.
+  * **选择标准：** 根据组织职位、决策权、领域专业知识、接触问题的程度、个人利益/冲突以及对系统验收的影响力，动态选择具有代表性的利益相关者样本。
+* **Challenges:** Distributed sources, conflicting viewpoints, different terminologies/cultures, hidden needs, internal politics, and organizational/staff changes.
+  * **面临的挑战：** 信息来源分散、观点冲突、术语和文化差异、隐含需求、内部政治博弈以及人员或组织变动。
+* **Solutions:** Strong communication skills (listening/talking), building trust, and holding review meetings to reformulate and restructure knowledge.
+  * **应对策略：** 良好的沟通技巧（倾听与表达）、建立信任关系，以及通过评审会议对知识进行重新表述和结构化整理。
+
+---
+
+## 2. Artefact-Driven Elicitation Techniques (基于制品的获取技术)
+
+* **Background Study:** Review existing documents (org charts, workflows, regulations, defect reports) as a prerequisite before meeting stakeholders; use meta-knowledge to filter out irrelevant/outdated info.
+  * **背景调查：** 在接触利益相关者前查阅现有文档（组织架构、工作流、法规、缺陷报告）作为前置准备；利用元知识过滤无关或过时信息。
+* **Data Collection:** Gather undocumented facts/figures (usage stats, performance, costs) via statistical sampling to elicit non-functional requirements.
+  * **数据收集：** 通过统计抽样收集未记录在案的事实与数据（使用率统计、性能数据、成本等），以获取非功能性需求。
+* **Questionnaires:** Submit multiple-choice or weighting questions to gather subjective opinions quickly and remotely. Must avoid bias/ambiguity and include redundant questions to check consistency.
+  * **问卷调查：** 通过选择题或权重题快速、远程地收集大量主观意见。设计时需避免偏见和歧义，并加入隐含的冗余问题以检测回答的一致性。
+* **Card Sorts & Repertory Grids:**
+  * **卡片分类法与凯利方格法：**
+  * **Card Sorts:** Stakeholders group concept cards by their own criteria to uncover relationships and rules.
+    * **卡片分类法：** 让利益相关者按自己的标准对概念卡片进行分组，以揭示概念间的关系和业务规则。
+  * **Repertory Grids:** Characterize concepts through attributes and value ranges (concept-attribute grid) or class-subclass hierarchies (*conceptual laddering*).
+    * **凯利方格法：** 通过属性和取值范围（概念-属性网格）或类与子类的层级关系（*概念阶梯法*）来刻画目标概念。
+* **Scenarios & Storyboards:** Narrative sequences illustrating system interactions to explore the system-to-be and define acceptance tests.
+  * **场景与故事板：** 通过叙述性交互序列展示系统运行方式，用于探索目标系统并制定验收测试用例。
+  * **Types:** *Positive* (desired behaviors: normal vs. abnormal/exception cases) vs. *Negative* (excluded behaviors). Pros: concrete and appealing; Cons: inherently partial and risks over-specification.
+    * **分类：** *正面场景*（系统应覆盖的期望行为，包含正常和异常情况）与 *负面场景*（系统应排除的行为）。优点是具体直观；缺点是覆盖不全且容易过度规约。
+* **Prototypes & Mock-ups:** Quick, reduced sketches of the software (functional or UI) to get early user feedback on unclear requirements.
+  * **原型与模型：** 快速构建软件的简化草图（功能原型或界面原型），针对不明确的需求获取早期用户反馈。
+  * **Types:** *Mock-up* (throw-away) vs. *Evolutionary prototype* (refined into final code). Pros: clarifies hidden needs; Cons: ignores non-functional reqs, sets unrealistic expectations, and produces "quick-and-dirty" code.
+    * **分类：** *一次性模型（Mock-up）* 与 *演化原型*（逐步演进为最终代码）。优点是能澄清隐含需求；缺点是容易忽略非功能需求、拔高用户期望且代码质量粗糙。
+* **Knowledge Reuse:** Speed up elicitation by **Retrieving $\rightarrow$ Transposing $\rightarrow$ Validating/Adapting** knowledge from similar systems.
+  * **知识复用：** 通过从相似系统中**检索 $\rightarrow$ 迁移 $\rightarrow$ 验证与调整**知识来加速需求获取。
+  * **Domain-Independent:** Use requirement taxonomies or RD meta-models as checklists.
+    * **领域无关复用：** 将需求分类法或需求文档元模型作为检查清单。
+  * **Domain-Specific:** Specialize abstract domains (e.g., *Resource Management* $\rightarrow$ *Library Loan Management*) via feature inheritance and renaming.
+    * **特定领域复用：** 通过特征继承和重命名，将抽象领域具体化（例如：*资源管理* $\rightarrow$ *图书馆借阅管理*）。
+
+---
+
+## 3. Stakeholder-Driven Elicitation Techniques (基于利益相关者的获取技术)
+
+* **Interviews:** Primary technique involving selecting interviewees, conducting meetings, and validating transcripts.
+  * **访谈：** 最核心的获取技术，包括选定受访者、开展访谈以及交由受访者确认访谈纪要。
+  * **Modes:** Combine **Structured** (predetermined questions, focused) and **Unstructured** (free discussion, exploratory).
+    * **模式：** 结合**结构化访谈**（预设问题、聚焦重点）与**非结构化访谈**（自由讨论、探索潜在问题）。
+  * **Guidelines:** Prepare via background study, break the ice, avoid biased/leading questions, keep open-ended questions for the end, and transcribe while fresh.
+    * **准则：** 提前做好背景调查、破冰建立信任、避免带有偏见或引导性的问题、把开放式问题留在最后，并趁记忆清晰及时整理记录。
+* **Observation & Ethnographic Studies:** Understand tasks in the system-as-is by watching people work rather than relying solely on verbal explanations.
+  * **观察与民族志研究：** 通过实地观察人员操作来理解现有系统的任务，而非仅依赖口头描述。
+  * **Modes:** *Passive* (watching from outside), *Protocol analysis* (performer explains while doing), *Ethnography* (long-term study of social/cultural dynamics), and *Active* (joining the task).
+    * **模式：** *被动观察*（旁观记录）、*出声思维法/协议分析*（操作者边做边解释）、*民族志研究*（长期观察群体社会文化动态）以及 *主动观察*（亲自参与任务）。
+  * **Pros & Cons:** Uncovers tacit knowledge and hidden workarounds, but is slow, expensive, and subject to observer bias (people act differently when watched).
+    * **优缺点：** 能挖掘隐性知识和变通做法，但耗时昂贵，且受“观察者效应”影响（被观察时行为会失真）。
+* **Group Sessions:** Workshops leveraging group synergy to explore high-level requirements and resolve conflicts.
+  * **小组会议：** 利用群体协同效应探索高层需求并解决冲突的工作坊。
+  * **Structured (e.g., JAD, QFD, Focus Groups):** Defined roles (moderator, user, developer) focused on reaching agreement.
+    * **结构化小组会议（如 JAD、QFD、焦点小组）：** 参与者角色明确（主持人、用户、开发人员），专注于达成共识。
+  * **Unstructured (Brainstorming):** Two phases—(1) *Idea generation* without criticism, followed by (2) *Idea evaluation* and prioritization based on agreed criteria.
+    * **非结构化小组会议（头脑风暴）：** 分为两阶段——（1）无批评的*创意生成*，随后（2）按商定标准进行*创意评估*与优先级排序。
+* **Combining Techniques:** Mix artefact-driven and stakeholder-driven methods for best coverage (e.g., *Contextual Inquiry* = observation + interview + prototyping; *RAD* = JAD + evolutionary prototyping).
+  * **技术组合：** 结合基于制品和基于利益相关者的技术以实现全面覆盖（例如：*情境调查* = 观察 + 访谈 + 原型；*快速应用开发 RAD* = JAD + 演化原型）。
+
+---
+
+## 4. Requirements Elicitation Process (需求获取流程)
+
+1. **Prepare for Elicitation (获取前准备):**
+   * **Plan scope & agenda:** Align with project scope and allocate time per topic.
+     * **规划范围与议程：** 与项目总范围保持一致，并为各议题分配时间。
+   * **Prepare resources:** Identify stakeholders, book rooms/equipment, and review existing docs.
+     * **准备资源：** 确定利益相关者、预订场地设备并研读现有文档。
+   * **Prepare questions & straw man models:** Draft questions and preliminary models (use cases, activity diagrams) as a starting point for discussion.
+     * **准备问题与“稻草人”模型（草稿模型）：** 起草问题清单和初步分析模型（用例图、活动图）作为讨论起点。
+2. **Perform Elicitation Activities (执行获取活动):**
+   * Execute interviews, observations, or workshops.
+     * 开展访谈、观察或工作坊。
+   * **Key tips:** Educate stakeholders on the process, take thorough notes, and exploit the physical space (whiteboards, wall charts).
+     * **关键技巧：** 引导利益相关者了解流程、做好详尽笔记，并充分利用物理空间（白板、挂图）。
+3. **Follow Up After Elicitation (获取后跟进):**
+   * **Organize & share notes:** Consolidate inputs from multiple sources, keep raw notes, and share edited notes with participants to validate and flag issues.
+     * **整理并共享笔记：** 整合多方输入，保留原始记录，并将整理后的笔记分享给参与者以进行确认和纠错。
+   * **Document open issues:** Track knowledge gaps and unresolved questions in an issue-tracking tool (with owner and due date)[cite: 2].
+     * **记录未决问题：** 在问题追踪工具中记录知识盲区和待解决的新问题（明确负责人和截止日期）。
